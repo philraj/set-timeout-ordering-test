@@ -5,13 +5,10 @@ var numPushes = 0;
 var numChecks = 0;
 var startTime = ( new Date() ).getTime();
 
-for (var i = 0; i <= limit; i++) {
+for (let i = 0; i <= limit; i++) {
   if (i < limit) {
     setTimeout(
-      ( (index)=> {
-        numbers.push(index);
-        numPushes++;
-      }).bind(null, i), 0
+      ()=> pushNum(i), 0
     );
   }
   else {
@@ -27,6 +24,12 @@ for (var i = 0; i <= limit; i++) {
       }, 0
     );
   }
+}
+
+function pushNum (num) {
+  numbers.push(num);
+  numPushes++;
+  if (num === limit - 1) console.log( (new Date()).getTime() - startTime )
 }
 
 function checkOrder (array) {
